@@ -24,7 +24,7 @@ const Navbar = () => {
     dispatch(setUserData(null));
   };
 
-  const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+  const handleSearch = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     if (inputValue && inputValue.trim().length > 0) {
       dispatch(setSearchInput(inputValue));
@@ -44,7 +44,7 @@ const Navbar = () => {
               setInputValue(e.target.value)
             }
           />
-          <button type="submit" className="submit" onClick={handleClick}>
+          <button type="submit" className="submit" onClick={handleSearch}>
             Search
           </button>
         </div>
