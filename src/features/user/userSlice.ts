@@ -24,13 +24,13 @@ const userSlice = createSlice({
     setSignedIn: (state, action: PayloadAction<boolean>) => {
       state.isSignedIn = action.payload;
     },
-    setUserData: (state, action: PayloadAction<UserType>) => {
+    setUserData: (state, action: PayloadAction<UserType | null>) => {
       state.userData = action.payload;
     },
     setSearchInput: (state, action: PayloadAction<string>) => {
       state.searchInput = action.payload;
     },
-    setBlogData: (state, action: PayloadAction<BlogType[]>) => {
+    setBlogData: (state, action: PayloadAction<BlogType[] | null>) => {
       state.blogData = action.payload;
     },
   },

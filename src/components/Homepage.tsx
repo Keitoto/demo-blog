@@ -1,6 +1,9 @@
 import { GoogleCredentialResponse, GoogleLogin } from '@react-oauth/google';
+import console from 'console';
+import jwtDecode from 'jwt-decode';
 
 import { useAppDispatch, useAppSelector } from '@/app/store';
+import { DecodedUserDataResponseType, UserType } from '@/features/user/type';
 import {
   selectSignedIn,
   setSignedIn,
@@ -14,7 +17,21 @@ const Homepage = () => {
 
   const loginSuccessHandler = (res: GoogleCredentialResponse) => {
     dispatch(setSignedIn(true));
-    dispatch(setUserData(res));
+    const { credential: token } = res;
+    if (!token) return;
+    const {
+      name,
+      given_name: givenName,
+      picture,
+    } = jwtDecode(token) as DecodedUserDataResponseType;
+    const userData: UserType = {
+      ...res,
+      name,
+      givenName,
+      picture,
+    };
+
+    dispatch(setUserData(userData));
   };
 
   return (
