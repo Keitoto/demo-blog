@@ -2,13 +2,13 @@ import { createSlice } from '@reduxjs/toolkit';
 import { PayloadAction } from '@reduxjs/toolkit/dist/createAction';
 
 import type { RootState } from '@/app/store';
-import type { BlogType, UserType } from '@/features/user/type';
+import type { BlogListType, UserType } from '@/features/user/type';
 
 interface UserStateType {
   isSignedIn: boolean;
   userData: UserType | null;
   searchInput: string;
-  blogData: BlogType[] | null;
+  blogData: BlogListType | null;
 }
 const initialState: UserStateType = {
   isSignedIn: false,
@@ -30,7 +30,7 @@ const userSlice = createSlice({
     setSearchInput: (state, action: PayloadAction<string>) => {
       state.searchInput = action.payload;
     },
-    setBlogData: (state, action: PayloadAction<BlogType[] | null>) => {
+    setBlogData: (state, action: PayloadAction<BlogListType | null>) => {
       state.blogData = action.payload;
     },
   },
