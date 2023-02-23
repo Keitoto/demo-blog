@@ -1,11 +1,12 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { PayloadAction } from '@reduxjs/toolkit/dist/createAction';
 
+import type { RootState } from '@/app/store';
 import type { BlogType, UserType } from '@/features/user/type';
 
 interface UserStateType {
   isSignedIn: boolean;
-  userData: UserType[] | null;
+  userData: UserType | null;
   searchInput: string;
   blogData: BlogType[] | null;
 }
@@ -23,7 +24,7 @@ const userSlice = createSlice({
     setSignedIn: (state, action: PayloadAction<boolean>) => {
       state.isSignedIn = action.payload;
     },
-    setUserData: (state, action: PayloadAction<UserType[]>) => {
+    setUserData: (state, action: PayloadAction<UserType>) => {
       state.userData = action.payload;
     },
     setSearchInput: (state, action: PayloadAction<string>) => {
@@ -38,6 +39,9 @@ const userSlice = createSlice({
 export const { setSignedIn, setUserData, setSearchInput, setBlogData } =
   userSlice.actions;
 
-// export const selectSignedIn = (state) => state.user.isSignedIn;
+export const selectSignedIn = (state: RootState) => state.user.isSignedIn;
+export const selectUserData = (state: RootState) => state.user.userData;
+export const selectSearchInput = (state: RootState) => state.user.searchInput;
+export const selectBlogData = (state: RootState) => state.user.blogData;
 
 export default userSlice.reducer;
