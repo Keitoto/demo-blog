@@ -31,6 +31,7 @@ module.exports = {
     'react-hooks/rules-of-hooks': 'error',
     'import/prefer-default-export': 'off',
     'import/extensions': 'off',
+    'import/no-extraneous-dependencies': ['off'],
     'simple-import-sort/imports': 'error',
     'react-hooks/exhaustive-deps': 'warn',
     'react/react-in-jsx-scope': 'off',
@@ -43,11 +44,12 @@ module.exports = {
         unnamedComponents: 'arrow-function',
       },
     ],
-    'no-param-reassign': ['error', {
-      props: true,
-      ignorePropertyModificationsFor: [
-        'state',
-      ]
-    }],
+    'no-param-reassign': [
+      'error',
+      {
+        props: true,
+        ignorePropertyModificationsFor: ['state'],
+      },
+    ],
   },
 };
