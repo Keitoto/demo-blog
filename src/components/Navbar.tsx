@@ -13,7 +13,7 @@ import {
 } from '@/features/user/userSlice';
 
 const Navbar = () => {
-  const [inputValue, setInputValue] = useState<string>();
+  const [inputValue, setInputValue] = useState('tech');
   const isSignedIn = useAppSelector(selectSignedIn);
   const userData = useAppSelector(selectUserData);
   const dispatch = useAppDispatch();
